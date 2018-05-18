@@ -26,14 +26,12 @@ public class ClienteController {
 	@Autowired
 	private ClienteService clienteService;
 
-	//@RequestMapping(path="/clientes/{name}", method=RequestMethod.POST)
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Cliente cli) {
 		
 		clienteRepository.save(cli);
 		
 		return ResponseEntity.ok().build();
-		
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
@@ -47,7 +45,6 @@ public class ClienteController {
 	@RequestMapping(path="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Cliente> list(@PathVariable Integer id){
 		Optional<Cliente> cli = clienteRepository.findById(id);
-		
 		
 		return ResponseEntity.ok().body(cli.get());
 	}
