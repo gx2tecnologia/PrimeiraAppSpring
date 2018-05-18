@@ -52,13 +52,12 @@ public class ClienteController {
 		return ResponseEntity.ok().body(cli.get());
 	}
 	
-	
-	/*@RequestMapping(value="/filtercpf", method = RequestMethod.GET)
-	public ResponseEntity<Cliente> filterCpf(@RequestParam(value="cpf") String cpf) {
-		Cliente cli = clienteRepository.findByCpf(cpf);
+	@RequestMapping(path="/{id}/votes", method=RequestMethod.POST)
+	public ResponseEntity<Cliente> votes(@PathVariable Integer id){
+		Cliente cli = clienteService.vote(id);
+		
 		return ResponseEntity.ok().body(cli);
-	
-	}*/
+	}
 
 }
 
